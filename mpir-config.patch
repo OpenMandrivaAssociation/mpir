@@ -1,0 +1,28 @@
+Fix broken configure test compromised by LTO
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index c35e07f..d052407 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -2885,7 +2885,7 @@ cat >conftest.c <<\EOF
+   { '\376', '\334', '\272', '\230', '\166', '\124', '\062', '\020' },
+ };]
+ EOF
+-gmp_compile="$CC $CFLAGS $CPPFLAGS -c conftest.c >&AC_FD_CC 2>&1"
++gmp_compile="$CC $CFLAGS $CPPFLAGS -ffat-lto-objects -c conftest.c >&AC_FD_CC 2>&1"
+ if AC_TRY_EVAL(gmp_compile); then
+ cat >conftest.awk <<\EOF
+ [
+diff --git a/configure b/configure
+index 0e47b65..7e66697 100755
+--- a/configure
++++ b/configure
+@@ -23330,7 +23330,7 @@ struct {
+   { '\376', '\334', '\272', '\230', '\166', '\124', '\062', '\020' },
+ };
+ EOF
+-gmp_compile="$CC $CFLAGS $CPPFLAGS -c conftest.c >&5 2>&1"
++gmp_compile="$CC $CFLAGS $CPPFLAGS -ffat-lto-objects -c conftest.c >&5 2>&1"
+ if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$gmp_compile\""; } >&5
+   (eval $gmp_compile) 2>&5
+   ac_status=$?
