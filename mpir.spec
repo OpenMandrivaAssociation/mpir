@@ -12,7 +12,7 @@ Release:        5
 Summary:        Multiprecision integer library derived from GMP
 License:        LGPLv3+
 Group:          System/Libraries
-Url:            http://mpir.org/
+Url:            https://mpir.org/
 Source:         http://mpir.org/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-config.patch
 
