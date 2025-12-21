@@ -19,6 +19,11 @@ Patch0:         %{name}-config.patch
 # ppc64 assembly has not yet been ported to little endian
 ExcludeArch:    ppc64le
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  gcc-c++
 BuildRequires:  m4
 BuildRequires:  yasm
